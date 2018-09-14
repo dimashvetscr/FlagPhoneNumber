@@ -358,7 +358,7 @@ open class FPNTextField: UITextField, UITextFieldDelegate, FPNCountryPickerDeleg
 		
 		doneButton.accessibilityLabel = "doneButton"
         
-        let cancelButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.cancel, target: self, action: #selector(resetKeyBoard))
+        let cancelButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.cancel, target: self, action: #selector(resetState))
         
         cancelButton.accessibilityLabel = "cancelButton"
 		
