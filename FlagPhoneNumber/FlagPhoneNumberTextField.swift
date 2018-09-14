@@ -342,15 +342,19 @@ open class FPNTextField: UITextField, UITextFieldDelegate, FPNCountryPickerDeleg
 		let doneButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(resetKeyBoard))
 		
 		doneButton.accessibilityLabel = "doneButton"
+        
+        let cancelButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.cancel, target: self, action: #selector(resetKeyBoard))
+        
+        cancelButton.accessibilityLabel = "cancelButton"
 		
 		if parentViewController != nil {
 			let searchButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.search, target: self, action: #selector(displayAlphabeticKeyBoard))
 			
 			searchButton.accessibilityLabel = "searchButton"
 			
-			return [searchButton, space, doneButton]
+			return [cancelButton, searchButton, space, doneButton]
 		}
-		return [space, doneButton]
+		return [cancelButton, space, doneButton]
 	}
 
 	private func updatePlaceholder() {
