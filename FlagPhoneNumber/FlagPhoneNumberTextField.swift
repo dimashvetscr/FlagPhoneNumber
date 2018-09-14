@@ -66,7 +66,7 @@ open class FPNTextField: UITextField, UITextFieldDelegate, FPNCountryPickerDeleg
 		}
 	}
 
-	var selectedCountry: FPNCountry? {
+	public var selectedCountry: FPNCountry? {
 		didSet {
 			updateUI()
 		}
