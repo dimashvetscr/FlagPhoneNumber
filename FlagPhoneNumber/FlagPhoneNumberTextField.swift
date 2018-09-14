@@ -71,6 +71,12 @@ open class FPNTextField: UITextField, UITextFieldDelegate, FPNCountryPickerDeleg
 			updateUI()
 		}
 	}
+    
+    	public var pickedCountry: FPNCountry? {
+        	didSet {
+            		updateUI()
+        	}
+    	}
 
 
 	/// If set, a search button appears in the picker inputAccessoryView to present a country search view controller
@@ -192,8 +198,17 @@ open class FPNTextField: UITextField, UITextFieldDelegate, FPNCountryPickerDeleg
 		keyboardType = .default
 		inputView = nil
 		inputAccessoryView = nil
+        pickedCountry = selectedCountry
 		resignFirstResponder()
 	}
+    
+    @objc private func resetState() {
+        keyboardType = .default
+        inputView = nil
+        inputAccessoryView = nil
+        selectedCountry = pickedCountry
+        resignFirstResponder()
+    }
 	
 	// - Public
 
