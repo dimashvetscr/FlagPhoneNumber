@@ -239,15 +239,23 @@ open class FPNTextField: UITextField, UITextFieldDelegate, FPNCountryPickerDeleg
 	/// Set directly the phone number. e.g "+33612345678"
 	public func set(phoneNumber: String) {
 		let cleanedPhoneNumber: String = clean(string: phoneNumber)
-
-		if let validPhoneNumber = getValidNumber(phoneNumber: cleanedPhoneNumber) {
+        let formattedPhoneNumber = "+" + cleanedPhoneNumber
+		if let validPhoneNumber = getValidNumber(phoneNumber: formattedPhoneNumber) {
 			if validPhoneNumber.italianLeadingZero {
 				text = "0\(validPhoneNumber.nationalNumber.stringValue)"
 			} else {
 				text = validPhoneNumber.nationalNumber.stringValue
 			}
 			setFlag(for: phoneUtil.getRegionCode(for: validPhoneNumber))
-		}
+        } else {
+            var nationalNumber: NSString? = nil
+            let countryCode = phoneUtil.extractCountryCode(cleanedPhoneNumber, nationalNumber: &nationalNumber)
+            if let formattedNationalNumber = nationalNumber as? String {
+                text = formattedNationalNumber
+            } else {
+                text = cleanedPhoneNumber
+            }
+	}
 	}
 
 	// Private
