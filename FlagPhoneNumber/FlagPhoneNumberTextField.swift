@@ -247,11 +247,14 @@ open class FPNTextField: UITextField, UITextFieldDelegate, FPNCountryPickerDeleg
 				text = validPhoneNumber.nationalNumber.stringValue
 			}
 			setFlag(for: phoneUtil.getRegionCode(for: validPhoneNumber))
+            pickedCountry = selectedCountry
         } else {
             var nationalNumber: NSString? = nil
             let countryCode = phoneUtil.extractCountryCode(cleanedPhoneNumber, nationalNumber: &nationalNumber)
             if let formattedNationalNumber = nationalNumber as? String {
                 text = formattedNationalNumber
+                setFlag(for: phoneUtil.getRegionCode(forCountryCode: countryCode))
+                pickedCountry = selectedCountry
             } else {
                 text = cleanedPhoneNumber
             }
