@@ -255,7 +255,7 @@ open class FPNTextField: UITextField, UITextFieldDelegate, FPNCountryPickerDeleg
             } else {
                 text = cleanedPhoneNumber
             }
-	}
+	  }
 	}
 
 	// Private
